@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BENIGNO MANDRAS — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f0ede6;
+    --accent: #e8ff3c;   /* ← change this to any color you like */
+    --gray: #2a2a2a;
+    --mid: #555;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: var(--sans); overflow-x: hidden; cursor: none; }
+
+  /* ─── CUSTOM CURSOR ─── */
+  #cursor { position: fixed; width: 12px; height: 12px; background: var(--accent); top: 0; left: 0; pointer-events: none; z-index: 9999; transition: transform 0.1s; }
+  #cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid var(--accent); top: 0; left: 0; pointer-events: none; z-index: 9998; transition: transform 0.25s ease, width 0.2s, height 0.2s; transform: translate(-10px, -10px); }
+  body.hovering #cursor-ring { width: 48px; height: 48px; transform: translate(-18px, -18px); }
+
+  /* ─── NAV ─── */
+nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; border-bottom: 1px solid var(--gray); background: var(--black); z-index: 100; font-family: var(--mono); font-size: 12px; }
+.nav-logo { color: var(--accent); letter-spacing: 0.2em; font-weight: 700; }
+.nav-links { display: flex; gap: 2.5rem; }
+.nav-links a {
+  color: var(--mid);
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 11px;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active {
+  color: var(--accent);
+}
+.nav-links a.active::after {
+  width: 100%;
+}
+
+  /* ─── SECTIONS ─── */
+  section { min-height: 100vh; padding: 8rem 3rem 4rem; }
+
+  /* ─── HERO ─── */
+  #hero { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; border-bottom: 1px solid var(--gray); overflow: hidden; }
+  .hero-tag { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+
+  h1.name { font-size: clamp(2.6rem, 5.5vw, 5.5rem); font-weight: 900; line-height: 0.88; letter-spacing: -0.04em; margin-bottom: 0.5rem; text-transform: uppercase; }
+  h1.name span { color: var(--accent); }
+
+  .hero-role { font-family: var(--mono); font-size: 13px; color: var(--mid); margin: 1.5rem 0 2.5rem; border-left: 2px solid var(--accent); padding-left: 1rem; line-height: 1.8; }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.5rem; cursor: none; border: none; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .btn-primary { background: var(--accent); color: var(--black); font-weight: 700; }
+  .btn-primary:hover { background: var(--white); }
+  .btn-outline { background: transparent; color: var(--white); border: 1px solid var(--gray); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── HERO TERMINAL ─── */
+  .hero-terminal { background: #0f0f0f; border: 1px solid var(--gray); font-family: var(--mono); font-size: 13px; line-height: 1.6; }
+  .terminal-bar { background: var(--gray); padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; } .dot-y { background: #ffbd2e; } .dot-g { background: #28c840; }
+  .terminal-title { font-size: 11px; color: var(--mid); margin-left: auto; margin-right: auto; letter-spacing: 0.1em; }
+  .terminal-body { padding: 1.5rem; color: #ccc; min-height: 300px; }
+  .t-line { margin-bottom: 0.4rem; }
+  .t-prompt { color: var(--accent); }
+  .t-cmd { color: var(--white); }
+  .t-out { color: #888; padding-left: 1rem; }
+  .t-green { color: #28c840; } .t-yellow { color: #ffbd2e; } .t-blue { color: #4fc3f7; }
+  .cursor-blink { display: inline-block; width: 8px; height: 14px; background: var(--accent); vertical-align: text-bottom; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; border-bottom: 1px solid var(--gray); padding-bottom: 1.5rem; }
+  .section-num { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.2em; }
+  .section-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; }
+
+  /* ─── ABOUT ─── */
+  #about { border-bottom: 1px solid var(--gray); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .about-bio { font-size: 1.1rem; line-height: 1.8; color: #bbb; font-weight: 300; }
+  .about-bio strong { color: var(--white); font-weight: 700; }
+
+  .stat-block { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border: 1px solid var(--gray); }
+  .stat { padding: 1.5rem; border: 1px solid var(--gray); }
+  .stat-num { font-size: 2.5rem; font-weight: 900; color: var(--accent); line-height: 1; }
+  .stat-label { font-family: var(--mono); font-size: 11px; color: var(--mid); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.4rem; }
+
+  /* ─── SKILLS ─── */
+  .skills-list { display: flex; flex-direction: column; gap: 0; }
+  .skill-row { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--gray); font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; }
+  .skill-name { color: var(--white); }
+  .skill-bar { display: flex; gap: 3px; }
+  .skill-pip { width: 20px; height: 4px; background: var(--gray); }
+  .skill-pip.on { background: var(--accent); }
+
+  /* ─── MARQUEE ─── */
+  .marquee-wrap { overflow: hidden; border-top: 1px solid var(--gray); border-bottom: 1px solid var(--gray); padding: 1rem 0; margin: 4rem 0; background: #0f0f0f; }
+  .marquee-track { display: flex; gap: 3rem; white-space: nowrap; animation: marquee 20s linear infinite; }
+  .marquee-item { font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mid); display: flex; align-items: center; gap: 2rem; }
+  .marquee-item::after { content: '//'; color: var(--accent); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ─── PROJECTS ─── */
+  #projects { border-bottom: 1px solid var(--gray); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2px; }
+  .project-card { background: #0f0f0f; border: 1px solid var(--gray); padding: 2rem; transition: border-color 0.2s, background 0.2s; position: relative; overflow: hidden; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--accent); transition: height 0.3s; }
+  .project-card:hover { border-color: var(--accent); background: #111; }
+  .project-card:hover::before { height: 100%; }
+  .project-num { font-family: var(--mono); font-size: 11px; color: var(--mid); margin-bottom: 1.5rem; }
+  .project-title { font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 0.75rem; line-height: 1.1; }
+  .project-desc { font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 1.5rem; font-family: var(--mono); }
+  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--gray); color: var(--mid); }
+  .project-card:hover img { filter: grayscale(0); }
+  /* ─── TERMINAL SECTION ─── */
+  #terminal-section { border-bottom: 1px solid var(--gray); }
+  .big-terminal { background: #0a0a0a; border: 1px solid var(--gray); font-family: var(--mono); font-size: 14px; line-height: 1.8; }
+  .big-terminal-bar { background: #111; padding: 0.75rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--gray); }
+  .big-terminal-body { padding: 2rem; min-height: 400px; }
+  #terminal-output { color: #999; }
+  #terminal-input-line { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; }
+  #terminal-input { background: transparent; border: none; outline: none; color: var(--white); font-family: var(--mono); font-size: 14px; flex: 1; caret-color: var(--accent); cursor: text; }
+
+  /* ─── CONTACT ─── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+  .contact-headline { font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; line-height: 0.9; }
+  .contact-headline span { color: var(--accent); display: block; }
+  .contact-links { display: flex; flex-direction: column; gap: 0; }
+  .contact-link { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--gray); text-decoration: none; color: var(--white); font-family: var(--mono); font-size: 13px; letter-spacing: 0.05em; transition: all 0.2s; }
+  .contact-link:hover { color: var(--accent); padding-left: 1rem; }
+  .contact-link .arrow { color: var(--mid); }
+  .contact-link:hover .arrow { color: var(--accent); }
+
+  /* ─── FOOTER ─── */
+  footer { padding: 2rem 3rem; border-top: 1px solid var(--gray); display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 11px; color: var(--mid); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 6rem 1.5rem 3rem; }
+    #hero, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  NAV — edit logo text and links below      -->
+<!-- ═══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">BENIGNO.DEV</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#terminal-section">Terminal</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  HERO — edit name, role lines, and buttons -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Aspiring Web Developer</div>
+    <h1 class="name">
+      BENIGNO<br>
+      RODRIGO<br>
+      <span>MANDRAS.</span>
+    </h1>
+    <div class="hero-role">
+      Web Developer in the Making<br>
+      Builder of Digital Experiences<br>
+      Jr. — Always Learning
+    </div>
+    <div class="hero-btns">
+      <a href="#terminal-section" class="btn btn-primary">Try Terminal →</a>
+      <a href="#projects" class="btn btn-outline">View Work</a>
+    </div>
+  </div>
+
+  <!-- Hero terminal is animated via JS below — edit heroLines array -->
+  <div class="hero-terminal">
+    <div class="terminal-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <div class="terminal-title">~bash — benigno</div>
+    </div>
+    <div class="terminal-body" id="hero-terminal-body"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  ABOUT — edit bio text and stat numbers    -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">[ 01 ]</span>
+    <h2 class="section-title">About</h2>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p class="about-bio">
+        I'm <strong>Benigno Rodrigo O. Mandras Jr.</strong> — an aspiring web developer
+        with a passion for turning ideas into functional, well-crafted websites.
+        <br><br>
+        I'm currently sharpening my skills in modern web technologies, building projects
+        from scratch, and learning something new every single day. I believe in
+        <strong>writing clean code</strong>, sweating the details, and shipping things
+        that actually work.
+      </p>
+      <div class="stat-block">
+        <!-- Edit the number and label of each stat -->
+        <div class="stat">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Lines Written</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Dedication</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Days Off Learning</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">☕</div>
+          <div class="stat-label">Fuelled By Coffee</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills are rendered by JS — edit the `skills` array in the script below -->
+    <div><div class="skills-list" id="skills-list"></div></div>
+  </div>
+</section>
+
+<!-- Scrolling marquee — edit items in the `items` array in the script below -->
+<div class="marquee-wrap"><div class="marquee-track" id="marquee"></div></div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  PROJECTS — edit in the `projects` array   -->
+<!--  in the script section below               -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">[ 02 ]</span>
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <div class="projects-grid" id="projects-grid"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  TERMINAL — edit commands in the           -->
+<!--  `commands` object in the script below     -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="terminal-section">
+  <div class="section-header">
+    <span class="section-num">[ 03 ]</span>
+    <h2 class="section-title">Terminal</h2>
+  </div>
+  <p style="font-family:var(--mono);font-size:13px;color:var(--mid);margin-bottom:2rem;">
+    Type <span style="color:var(--accent)">help</span> to see available commands.
+  </p>
+  <div class="big-terminal">
+    <div class="big-terminal-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <span style="font-family:var(--mono);font-size:11px;color:var(--mid);margin-left:1rem;">portfolio@benigno:~$</span>
+    </div>
+    <div class="big-terminal-body">
+      <div id="terminal-output"></div>
+      <div id="terminal-input-line">
+        <span class="t-prompt">portfolio@benigno:~$</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" placeholder="_" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  CONTACT — edit links (href) below         -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">[ 04 ]</span>
+    <h2 class="section-title">Contact</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-headline">
+      LET'S<br>BUILD<br><span>SOMETHING.</span>
+    </div>
+    <div>
+      <p style="font-family:var(--mono);font-size:13px;color:var(--mid);margin-bottom:2rem;line-height:1.8;">
+        Open for collaborations, internships,<br>and cool projects. Let's talk.
+      </p>
+      <div class="contact-links">
+        <!-- Replace href values with your real links -->
+        <a class="contact-link" href="mailto:benignomandras@gmail.com">
+          <span>EMAIL</span><span class="arrow">↗</span>
+        </a>
+        <a class="contact-link" href="https://github.com/RedFleXx" target="_blank">
+          <span>GITHUB</span><span class="arrow">↗</span>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/mandras-benigno-rodrigo-104bab390/" target="_blank">
+          <span>LINKEDIN</span><span class="arrow">↗</span>
+        </a>
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 BENIGNO RODRIGO O. MANDRAS JR. ALL RIGHTS RESERVED.</span>
+  <span style="color:var(--accent)">OPEN TO OPPORTUNITIES</span>
+</footer>
+
+
+<script>
+/* ════════════════════════════════════════════════════════
+   CUSTOM CURSOR
+════════════════════════════════════════════════════════ */
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px)`;
+  ring.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
+});
+document.querySelectorAll('a, button, input, .project-card').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+});
+
+
+/* ════════════════════════════════════════════════════════
+   HERO TERMINAL ANIMATION
+   Edit the `cmd` and `text` values to change what types
+   out automatically on page load.
+════════════════════════════════════════════════════════ */
+const heroLines = [
+  { type: 'prompt', cmd: 'whoami',           delay: 800 },
+  { type: 'out', text: 'benigno_mandras — aspiring web developer', delay: 400, cls: 't-green' },
+  { type: 'prompt', cmd: 'cat skills.txt',   delay: 900 },
+  { type: 'out', text: 'HTML  CSS  JavaScript  React',             delay: 200 },
+  { type: 'out', text: 'Node.js  Git  Figma  Tailwind',            delay: 200 },
+  { type: 'prompt', cmd: 'ls projects/',     delay: 900 },
+  { type: 'out', text: 'Arellano Online Admission System/',     delay: 150, cls: 't-blue' },
+  { type: 'out', text: 'Bound Together/',      delay: 150, cls: 't-blue' },
+  { type: 'out', text: 'FeelBright/',      delay: 150, cls: 't-blue' },
+  { type: 'prompt', cmd: 'echo $STATUS',     delay: 900 },
+  { type: 'out', text: '✓ Open to opportunities', delay: 300, cls: 't-green' },
+];
+
+const heroBody = document.getElementById('hero-terminal-body');
+let hIdx = 0;
+function typeHero() {
+  if (hIdx >= heroLines.length) {
+    heroBody.innerHTML += `<div class="t-line"><span class="t-prompt">~/dev $</span> <span class="cursor-blink"></span></div>`;
+    return;
+  }
+  const l = heroLines[hIdx++];
+  if (l.type === 'prompt') {
+    const el = document.createElement('div');
+    el.className = 't-line';
+    el.innerHTML = `<span class="t-prompt">~/dev $</span> <span class="t-cmd"></span>`;
+    heroBody.appendChild(el);
+    const cmdEl = el.querySelector('.t-cmd');
+    let ci = 0;
+    const typeChar = () => {
+      if (ci < l.cmd.length) { cmdEl.textContent += l.cmd[ci++]; setTimeout(typeChar, 55); }
+      else setTimeout(typeHero, l.delay);
+    };
+    typeChar();
+  } else {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = `t-line t-out ${l.cls || ''}`;
+      el.textContent = l.text;
+      heroBody.appendChild(el);
+      typeHero();
+    }, l.delay);
+  }
+}
+setTimeout(typeHero, 600);
+
+
+/* ════════════════════════════════════════════════════════
+   SKILLS
+   name  — displayed label
+   level — filled pips out of 5 (1 = beginner, 5 = expert)
+════════════════════════════════════════════════════════ */
+const skills = [
+  { name: 'HTML / CSS',       level: 3 },
+  { name: 'JavaScript',       level: 2 },
+  { name: 'React / Next.js',  level: 1 },
+  { name: 'Node.js',          level: 2 },
+  { name: 'Git / GitHub',     level: 3 },
+  { name: 'Figma / UI Design',level: 2 },
+  { name: 'Tailwind CSS',     level: 3 },
+  { name: 'MySQL / PostgreSQL', level: 2 },
+];
+
+const skillsList = document.getElementById('skills-list');
+skills.forEach(s => {
+  const row = document.createElement('div');
+  row.className = 'skill-row';
+  let pips = '';
+  for (let i = 1; i <= 5; i++) pips += `<div class="skill-pip ${i <= s.level ? 'on' : ''}"></div>`;
+  row.innerHTML = `<span class="skill-name">${s.name}</span><div class="skill-bar">${pips}</div>`;
+  skillsList.appendChild(row);
+});
+
+
+/* ════════════════════════════════════════════════════════
+   MARQUEE
+   Add or remove items from this array freely.
+════════════════════════════════════════════════════════ */
+const items = ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Node.js', 'Tailwind', 'Git', 'Figma', 'MySQL', 'PostgreSQL', 'Web Dev'];
+const marquee = document.getElementById('marquee');
+let mHtml = '';
+for (let i = 0; i < 3; i++) items.forEach(t => { mHtml += `<span class="marquee-item">${t}</span>`; });
+marquee.innerHTML = mHtml;
+
+
+/* ════════════════════════════════════════════════════════
+   PROJECTS
+   Add as many objects as you want.
+   num   — display number e.g. '001'
+   title — project title (shown in UPPERCASE)
+   desc  — short description (shown in monospace)
+   tags  — array of tech stack strings
+   link  — optional: add a `link: 'https://...'` key and
+            handle the click below if you want cards
+            to be clickable
+════════════════════════════════════════════════════════ */
+const projects = [
+  {
+    num: '001',
+    title: 'Arellano University Online Admission System',
+    desc: 'An online admission platform designed to simplify the application process for Arellano University by allowing students to submit requirements and track their admission status digitally.',
+    tags: ['HTML', 'CSS', 'PHP', 'MySQL'],
+    img: 'auajs.jpg',
+  },
+  {
+    num: '002',
+    title: 'Bound Together',
+    desc: 'Bound Together is a cooperative 2-player platformer where players rely on teamwork and coordination to navigate challenging levels and obstacles.',
+    tags: ['Godot Game Engine', 'GD Script'],
+    img: 'bound.jpg',
+  },
+  {
+    num: '003',
+    title: 'FeelBright: A Web-Based Emotional Intelligence Assessment And Improvement System',
+    desc: 'FeelBright is a web-based emotional intelligence assessment system that allows users to evaluate their emotional competencies through structured tests while offering insights and recommendations to support personal emotional development.',
+    tags: ['HTML', 'Tailwind CSS', 'JavaScript', 'Node.js', 'PostgreSQL', 'Express'],
+    img: 'fbright.jpg',
+  },
+];
+
+const grid = document.getElementById('projects-grid');
+projects.forEach(p => {
+  const card = document.createElement('div');
+  card.className = 'project-card';
+  card.innerHTML = `
+    <img src="${p.img}" alt="${p.title}" style="width:100%;height:200px;object-fit:cover;display:block;margin-bottom:1.5rem;filter:grayscale(1);transition:filter 0.3s;">
+    <div class="project-num">${p.num}</div>
+    <div class="project-title">${p.title}</div>
+    <div class="project-desc">${p.desc}</div>
+    <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+  `;
+  if (p.link) card.style.cursor = 'pointer', card.addEventListener('click', () => window.open(p.link, '_blank'));
+  grid.appendChild(card);
+  card.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+  card.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+});
+
+
+/* ════════════════════════════════════════════════════════
+   TERMINAL COMMANDS
+   Each key is a command the user can type.
+   Return an HTML string, or null for side-effects (clear).
+   You can add new commands by adding new keys.
+════════════════════════════════════════════════════════ */
+const termOutput = document.getElementById('terminal-output');
+const termInput  = document.getElementById('terminal-input');
+
+const commands = {
+
+  help: () => `<span style="color:var(--accent)">available commands:</span>
+<span class="t-out">  about       — who am i</span>
+<span class="t-out">  skills      — my tech stack</span>
+<span class="t-out">  projects    — my work</span>
+<span class="t-out">  contact     — get in touch</span>
+<span class="t-out">  status      — availability</span>
+<span class="t-out">  clear       — clear terminal</span>
+<span class="t-out">  joke        — why not</span>`,
+
+  about: () => `<span style="color:var(--accent)">$ cat about.txt</span>
+<span class="t-out">Name    : Benigno Rodrigo O. Mandras Jr.</span>
+<span class="t-out">Alias   : Benigno / Ben</span>
+<span class="t-out">Role    : Aspiring Web Developer</span>
+<span class="t-out">Based   : Philippines</span>
+<span class="t-out">Focus   : Backend</span>`,
+
+  skills: () => `<span style="color:var(--accent)">$ ls -la skills/</span>
+<span class="t-green">Core        :</span> <span class="t-out">HTML, CSS, JavaScript</span>
+<span class="t-green">Frontend    :</span> <span class="t-out">React, Next.js, Tailwind CSS</span>
+<span class="t-green">Backend     :</span> <span class="t-out">Node.js, express</span>
+<span class="t-green">Database    :</span> <span class="t-out">MySQL, PostgreSQL</span>
+<span class="t-green">Tools       :</span> <span class="t-out">Git, Figma, VS Code</span>`,
+
+  projects: () => `<span style="color:var(--accent)">$ ls -la projects/</span>
+<span class="t-blue">001</span> <span class="t-out">Arellano Online Admission System/    Online Admission System</span>
+<span class="t-blue">002</span> <span class="t-out">Bound Together/     2 Player Platformer Game</span>
+<span class="t-blue">003</span> <span class="t-out">FeelBright/     Emotional Intelligence Asssessment</span>`,
+
+  contact: () => `<span style="color:var(--accent)">$ cat contact.txt</span>
+<span class="t-out">Name    : Benigno Rodrigo O. Mandras Jr.</span>
+<span class="t-out">Email   : benignomandras027@gmail.com</span>
+<span class="t-out">GitHub  : https://github.com/RedFleXx</span>
+<span class="t-out">LinkedIn: https://www.linkedin.com/in/mandras-benigno-rodrigo-104bab390/</span>`,
+
+  status: () => `<span style="color:var(--accent)">$ systemctl status career</span>
+<span class="t-green">● Open to internships,collabs</span>
+<span class="t-out">  Active: building & learning every day</span>
+<span class="t-out">  Location: Philippines (open to remote)</span>`,
+
+  joke: () => `<span style="color:var(--accent)">$ sudo make me laugh</span>
+<span class="t-out">A web developer walks into a bar.</span>
+<span class="t-yellow">Tables. Everywhere.</span>`,
+
+  clear: () => { termOutput.innerHTML = ''; return null; },
+
+  /* ── Add your own command below, like this: ──
+  hello: () => `<span class="t-green">Hello, world!</span>`,
+  ── */
+};
+
+function appendOutput(html) {
+  if (html === null) return;
+  const div = document.createElement('div');
+  div.style.cssText = 'margin-bottom:1.2rem;font-family:var(--mono);font-size:13px;line-height:1.8;';
+  div.innerHTML = html;
+  termOutput.appendChild(div);
+}
+
+termInput.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const raw = termInput.value.trim().toLowerCase();
+  if (!raw) return;
+  const echo = document.createElement('div');
+  echo.style.cssText = 'margin-bottom:0.4rem;font-family:var(--mono);font-size:13px;';
+  echo.innerHTML = `<span class="t-prompt">portfolio@benigno:~$</span> <span style="color:var(--white)">${termInput.value.trim()}</span>`;
+  termOutput.appendChild(echo);
+  termInput.value = '';
+  if (commands[raw]) appendOutput(commands[raw]());
+  else appendOutput(`<span style="color:#e74c3c">command not found: ${raw}</span>\n<span class="t-out">Type 'help' for available commands.</span>`);
+});
+
+document.getElementById('terminal-section').addEventListener('click', () => termInput.focus());
+// ─── ACTIVE NAV HIGHLIGHT ON SCROLL ───
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
