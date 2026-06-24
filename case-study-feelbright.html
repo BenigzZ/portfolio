@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study | FeelBright</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f3ef;
+      --surface: #ffffff;
+      --surface-soft: #f2ede4;
+      --ink: #1f1c17;
+      --muted: #6a6257;
+      --line: #ded6ca;
+      --brand: #0e5960;
+      --brand-soft: #dcece8;
+      --radius: 16px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(14, 89, 96, 0.11), transparent 35%),
+        radial-gradient(circle at 0% 100%, rgba(160, 128, 84, 0.09), transparent 40%),
+        var(--bg);
+      line-height: 1.62;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin-inline: auto;
+      padding-block: 2rem 3.2rem;
+    }
+
+    .top-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+
+    .back-link {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .meta-line {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .updated-badge {
+      display: inline-block;
+      margin-top: 0.5rem;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      color: #184943;
+      border-radius: 999px;
+      padding: 0.26rem 0.62rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-family: Manrope, sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.03;
+      margin: 0.7rem 0 0.45rem;
+    }
+
+    .subtitle {
+      font-family: Manrope, sans-serif;
+      color: var(--brand);
+      font-size: clamp(1rem, 2.4vw, 1.25rem);
+      font-weight: 700;
+      margin-bottom: 0.95rem;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 76ch;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-image,
+    .section-image {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: var(--surface-soft);
+      aspect-ratio: 16 / 9;
+    }
+
+    .hero-image img,
+    .section-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin: 1rem 0 1.1rem;
+    }
+
+    .mini-info {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 0.85rem;
+    }
+
+    .mini-info span {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .mini-info strong {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .toc {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .toc h2 {
+      font-family: Manrope, sans-serif;
+      font-size: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.35rem 1rem;
+      list-style: none;
+    }
+
+    .toc-grid a {
+      color: var(--brand);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .toc-grid a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .kicker {
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .section h2 {
+      font-family: Manrope, sans-serif;
+      font-size: 1.35rem;
+      line-height: 1.22;
+      margin-bottom: 0.55rem;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin-bottom: 0.72rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.55rem;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fcfaf5;
+      padding: 0.8rem;
+    }
+
+    .card h3 {
+      font-family: Manrope, sans-serif;
+      font-size: 0.98rem;
+      margin-bottom: 0.28rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.42rem;
+      margin-top: 0.35rem;
+    }
+
+    .pill {
+      padding: 0.28rem 0.56rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.73rem;
+      color: #4f473d;
+      background: var(--brand-soft);
+      font-weight: 600;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-top: 0.6rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+      background: #fffefb;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      padding: 0.65rem 0.72rem;
+      font-size: 0.85rem;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f4efe6;
+      font-family: Manrope, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .footer-note {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .grid-4,
+      .toc-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="top-links">
+      <a class="back-link" href="index.html#projects">Back to Projects</a>
+      <p class="meta-line">Case Study • Capstone Project • October 2025</p>
+    </div>
+
+    <h1>FeelBright</h1>
+    <p class="updated-badge">Updated Case Study Build</p>
+    <p class="subtitle">A Web-Based Emotional Intelligence Assessment and Improvement System</p>
+    <p class="lead">
+      FeelBright is a full-stack platform developed to help students assess and improve emotional intelligence in a structured,
+      research-backed way. It combines guided self-assessment, personalized interpretation, wellness support, progress history,
+      and a faculty-facing portal for academic monitoring.
+    </p>
+
+    <div class="hero-image" aria-label="FeelBright hero image">
+      <img src="fbright.jpg" alt="FeelBright platform overview image">
+    </div>
+
+    <section class="grid-4" aria-label="Project overview">
+      <article class="mini-info">
+        <span>Role</span>
+        <strong>Full-Stack Developer</strong>
+      </article>
+      <article class="mini-info">
+        <span>Platform</span>
+        <strong>Web Application</strong>
+      </article>
+      <article class="mini-info">
+        <span>Institution</span>
+        <strong>Arellano University</strong>
+      </article>
+      <article class="mini-info">
+        <span>Timeline</span>
+        <strong>May to Oct 2025</strong>
+      </article>
+    </section>
+
+    <section class="section">
+      <p class="kicker">Developed in Collaboration With</p>
+      <div class="pill-list">
+        <span class="pill">Edznahar Pineda Junaz</span>
+        <span class="pill">Benigno Rodrigo O. Mandras</span>
+      </div>
+    </section>
+
+    <section class="toc">
+      <h2>Contents</h2>
+      <ul class="toc-grid">
+        <li><a href="#overview">01. Overview</a></li>
+        <li><a href="#problem-solution">02. Problem and Solution</a></li>
+        <li><a href="#landing">03. Public Landing Page</a></li>
+        <li><a href="#auth">04. Authentication and Onboarding</a></li>
+        <li><a href="#assessment">05. EQ Assessment</a></li>
+        <li><a href="#results">06. Results and Feedback</a></li>
+        <li><a href="#dashboard">07. User Dashboard</a></li>
+        <li><a href="#admin">08. Admin Portal</a></li>
+        <li><a href="#architecture">09. Database Architecture</a></li>
+        <li><a href="#reflection">10. Reflections and Next Steps</a></li>
+      </ul>
+    </section>
+
+    <section id="overview" class="section">
+      <p class="kicker">01 • Overview</p>
+      <h2>Free and Accessible, Research-Backed, Built for Students and Faculty</h2>
+      <p>
+        FeelBright was designed for educational use where affordable and practical EQ tools are often missing.
+        The assessment model is based on Daniel Goleman's five-domain framework and was aligned with the needs
+        of student self-development and faculty monitoring.
+      </p>
+      <div class="split">
+        <article class="card">
+          <h3>Free and Accessible</h3>
+          <p>
+            The platform is accessible through a browser without subscription costs,
+            making it usable for students and outreach participants.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Research-Backed Assessment</h3>
+          <p>
+            Domain coverage includes self-awareness, self-regulation, motivation,
+            empathy, and social skills using a structured assessment flow.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="problem-solution" class="section">
+      <p class="kicker">02 • Problem and Solution</p>
+      <h2>Addressing the EQ Assessment Gap in Academic Programs</h2>
+      <p>
+        The Psychology Department had IQ testing processes but no equivalent emotional quotient tool.
+        Without a dedicated system, project facilitators could not consistently measure emotional growth,
+        monitor participation impact, or produce reliable progress records for Project HR.
+      </p>
+      <div class="split">
+        <article class="card">
+          <h3>The Problem</h3>
+          <p>
+            Existing alternatives were either too expensive, too clinically oriented,
+            or not suitable for continuous development in an academic setting.
+          </p>
+        </article>
+        <article class="card">
+          <h3>The Solution</h3>
+          <p>
+            FeelBright introduced a free end-to-end platform with assessment,
+            interpretation, wellness content, progress tracking, and admin analytics.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="landing" class="section">
+      <p class="kicker">03 • Public Landing Page</p>
+      <h2>Clear First Impressions and Guided Entry Points</h2>
+      <p>
+        The landing page explains the platform in simple language, previews resources,
+        and guides visitors to register or explore with minimal friction.
+      </p>
+      <div class="section-image" aria-label="Landing section image">
+        <img src="fbright.jpg" alt="Landing page preview image">
+      </div>
+      <div class="split">
+        <article class="card">
+          <h3>Resource Preview</h3>
+          <p>
+            Visitors can review articles, wellness guides, and learning materials before creating an account.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Clear Entry Points</h3>
+          <p>
+            Sign Up and Explore actions are visible across the page for smoother first-time navigation.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="auth" class="section">
+      <p class="kicker">04 • Authentication and Onboarding</p>
+      <h2>Simple Registration, Email Verification, and Welcome Guidance</h2>
+      <p>
+        Users register with basic credentials and verify access through email.
+        A first-login onboarding modal introduces the major sections to shorten the learning curve.
+      </p>
+      <div class="section-image" aria-label="Authentication section image">
+        <img src="https://deleon-alfredmiguel.vercel.app/assets/4-auth-b-BryEK4Sc.jpg" alt="FeelBright authentication and onboarding preview">
+      </div>
+      <div class="split">
+        <article class="card">
+          <h3>Simple Registration</h3>
+          <p>
+            Name, email, and password create a complete account without unnecessary fields.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Email Verification and Onboarding</h3>
+          <p>
+            Verified sign-up improves account integrity while guided onboarding helps users begin with confidence.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="assessment" class="section">
+      <p class="kicker">05 • EQ Assessment</p>
+      <h2>Five-Domain Assessment with Structured Progress</h2>
+      <p>
+        The core module guides respondents through reflective prompts using a fixed sequence and visible progress indicator.
+        This makes completion more manageable and keeps interpretation consistent across users.
+      </p>
+      <div class="section-image" aria-label="Assessment section image">
+        <img src="https://deleon-alfredmiguel.vercel.app/assets/5-assessment-b-CHnxlTfw.jpg" alt="FeelBright EQ assessment preview">
+      </div>
+      <div class="pill-list" aria-label="EQ domains">
+        <span class="pill">Self-Awareness</span>
+        <span class="pill">Self-Regulation</span>
+        <span class="pill">Motivation</span>
+        <span class="pill">Empathy</span>
+        <span class="pill">Social Skills</span>
+      </div>
+      <div class="split">
+        <article class="card">
+          <h3>Domain Definitions</h3>
+          <p>
+            Each domain targets a distinct emotional capability so users can identify precise strengths and weaknesses.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Assessment Experience</h3>
+          <p>
+            Progress markers and consistent question flow reduce confusion and encourage full completion.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="results" class="section">
+      <p class="kicker">06 • Results and Feedback</p>
+      <h2>Readable Insights with Overall and Domain-Level Results</h2>
+      <p>
+        After submission, users receive an overall EI percentage with interpretation labels and per-domain breakdowns.
+        Results can be saved for history tracking and exported for reporting needs.
+      </p>
+      <div class="section-image" aria-label="Results section image">
+        <img src="https://deleon-alfredmiguel.vercel.app/assets/6-results-b-Ck-QxZce.jpg" alt="FeelBright results and feedback preview">
+      </div>
+      <div class="split">
+        <article class="card">
+          <h3>Overall EI Score</h3>
+          <p>
+            A top-level score provides a clear summary of current emotional intelligence status.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Domain Breakdown and Export</h3>
+          <p>
+            Domain analytics support targeted growth plans while report export helps with faculty submission workflows.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="dashboard" class="section">
+      <p class="kicker">07 • User Dashboard</p>
+      <h2>Continuous Growth Space Beyond One-Time Testing</h2>
+      <p>
+        The dashboard is the long-term engagement layer where users revisit assessments, access resources,
+        complete wellness activities, and review progress over time.
+      </p>
+      <div class="section-image" aria-label="Dashboard section image">
+        <img src="https://deleon-alfredmiguel.vercel.app/assets/7-dashboard-b-bNIuDMSw.jpg" alt="FeelBright dashboard preview">
+      </div>
+      <div class="split">
+        <article class="card">
+          <h3>Wellness Exercises and Resources</h3>
+          <p>
+            Includes mindfulness activities, journaling prompts, and educational guides for regular self-improvement.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Progress Tracking and Profile History</h3>
+          <p>
+            Historical records and trend visualizations make emotional development visible and measurable.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="admin" class="section">
+      <p class="kicker">08 • Admin Portal</p>
+      <h2>Faculty-Side Monitoring and Content Administration</h2>
+      <p>
+        A separate admin interface supports educational facilitators with analytics, content workflows,
+        and user oversight without disrupting student-facing interactions.
+      </p>
+      <div class="section-image" aria-label="Admin portal section image">
+        <img src="https://deleon-alfredmiguel.vercel.app/assets/8-admin-b-bzawdOxI.jpg" alt="FeelBright admin portal preview">
+      </div>
+      <div class="split">
+        <article class="card">
+          <h3>Analytics</h3>
+          <p>
+            Tracks participation rates, completion patterns, and aggregate score movement.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Content and User Management</h3>
+          <p>
+            Enables updates to materials, review of profile activity, and generation of program reports.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="architecture" class="section">
+      <p class="kicker">09 • Database Architecture</p>
+      <h2>Three-Layer Architecture with Five Core Tables</h2>
+      <p>
+        FeelBright runs on a modern web stack with clear separation between interface,
+        service logic, and data persistence.
+      </p>
+      <div class="section-image" aria-label="Database architecture section image">
+        <img src="https://deleon-alfredmiguel.vercel.app/assets/9-arch-b-CENyQ4sE.jpg" alt="FeelBright architecture diagram preview">
+      </div>
+      <div class="pill-list">
+        <span class="pill">React and Tailwind (UI Layer)</span>
+        <span class="pill">Node.js and Express (Server Layer)</span>
+        <span class="pill">PostgreSQL (Data Layer)</span>
+      </div>
+      <div class="table-wrap" aria-label="Database tables summary">
+        <table>
+          <thead>
+            <tr>
+              <th>Table</th>
+              <th>Stores</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>users</td>
+              <td>Account data</td>
+              <td>User identity information including name, email, profile image, and account timestamps.</td>
+            </tr>
+            <tr>
+              <td>assessments</td>
+              <td>Assessment structure</td>
+              <td>Domain setup, descriptions, and question definitions used by the EQ engine.</td>
+            </tr>
+            <tr>
+              <td>results</td>
+              <td>Score records</td>
+              <td>Overall EI scores, per-domain values, and generated feedback outputs.</td>
+            </tr>
+            <tr>
+              <td>resources</td>
+              <td>Content library</td>
+              <td>Articles, guides, and wellness activities accessible within the dashboard.</td>
+            </tr>
+            <tr>
+              <td>sessions</td>
+              <td>Activity log</td>
+              <td>Assessment attempts, completion states, and interaction timestamps.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="reflection" class="section">
+      <p class="kicker">10 • Reflections and Next Steps</p>
+      <h2>What Worked, What We Learned, and What Is Next</h2>
+      <p>
+        A major challenge was translating a psychological framework into a user experience that feels intuitive,
+        especially for non-technical participants. User testing sessions helped uncover friction and improve clarity.
+      </p>
+      <div class="split">
+        <article class="card">
+          <h3>What Went Well</h3>
+          <p>
+            The five-domain assessment flow, personalized feedback generation,
+            and admin monitoring tools performed well in evaluation use.
+          </p>
+        </article>
+        <article class="card">
+          <h3>What Is Next</h3>
+          <p>
+            Planned enhancements include mobile optimization, multilingual support,
+            and deeper recommendation logic for personalized growth plans.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="kicker">Tech Stack</p>
+      <div class="pill-list">
+        <span class="pill">HTML5</span>
+        <span class="pill">CSS3</span>
+        <span class="pill">JavaScript</span>
+        <span class="pill">Node.js</span>
+        <span class="pill">Express.js</span>
+        <span class="pill">PostgreSQL</span>
+        <span class="pill">Tailwind CSS</span>
+        <span class="pill">Git</span>
+      </div>
+    </section>
+
+    <p class="footer-note">Copyright 2026 Benigno Rodrigo O. Mandras Jr.</p>
+  </main>
+</body>
+</html>
