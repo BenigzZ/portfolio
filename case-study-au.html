@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study | Arellano University Online Admission System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f3ef;
+      --surface: #ffffff;
+      --surface-soft: #f2ede4;
+      --ink: #1f1c17;
+      --muted: #6a6257;
+      --line: #ded6ca;
+      --brand: #0e5960;
+      --brand-soft: #dcece8;
+      --radius: 16px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(14, 89, 96, 0.11), transparent 35%),
+        radial-gradient(circle at 0% 100%, rgba(160, 128, 84, 0.09), transparent 40%),
+        var(--bg);
+      line-height: 1.62;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin-inline: auto;
+      padding-block: 2rem 3.2rem;
+    }
+
+    .top-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+
+    .back-link {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    .meta-line {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-family: Manrope, sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.03;
+      margin: 0.7rem 0 0.45rem;
+    }
+
+    .placeholder-badge {
+      display: inline-block;
+      margin: 0.2rem 0 0.8rem;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      color: #174640;
+      border-radius: 999px;
+      padding: 0.28rem 0.66rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-family: Manrope, sans-serif;
+      color: var(--brand);
+      font-size: clamp(1rem, 2.4vw, 1.2rem);
+      font-weight: 700;
+      margin-bottom: 0.95rem;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 76ch;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-image,
+    .section-image {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: var(--surface-soft);
+      aspect-ratio: 16 / 9;
+    }
+
+    .hero-image img,
+    .section-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin: 1rem 0 1.1rem;
+    }
+
+    .mini-info {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 0.85rem;
+    }
+
+    .mini-info span {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .mini-info strong {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .toc {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .toc h2 {
+      font-family: Manrope, sans-serif;
+      font-size: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.35rem 1rem;
+      list-style: none;
+    }
+
+    .toc-grid a {
+      color: var(--brand);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .toc-grid a:hover { text-decoration: underline; }
+
+    .section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .kicker {
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .section h2 {
+      font-family: Manrope, sans-serif;
+      font-size: 1.35rem;
+      line-height: 1.22;
+      margin-bottom: 0.55rem;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin-bottom: 0.72rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.55rem;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fcfaf5;
+      padding: 0.8rem;
+    }
+
+    .card h3 {
+      font-family: Manrope, sans-serif;
+      font-size: 0.98rem;
+      margin-bottom: 0.28rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.42rem;
+      margin-top: 0.35rem;
+    }
+
+    .pill {
+      padding: 0.28rem 0.56rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.73rem;
+      color: #4f473d;
+      background: var(--brand-soft);
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .grid-4,
+      .toc-grid,
+      .split { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="top-links">
+      <a class="back-link" href="index.html#projects">Back to Projects</a>
+      <p class="meta-line">Case Study • Placeholder Draft</p>
+    </div>
+
+    <h1>Arellano University Online Admission System</h1>
+    <p class="placeholder-badge">Content Placeholder</p>
+    <p class="subtitle">Case Study Layout Ready</p>
+    <p class="lead">
+      This page now matches the same long-form case study style as FeelBright.
+      Section structure is finalized, and the text below is temporary placeholder copy for quick iteration.
+    </p>
+
+    <div class="hero-image" aria-label="Arellano hero image">
+      <img src="auajs.jpg" alt="Arellano project image">
+    </div>
+
+    <section class="grid-4" aria-label="Project overview placeholders">
+      <article class="mini-info"><span>Role</span><strong>[Placeholder]</strong></article>
+      <article class="mini-info"><span>Platform</span><strong>[Placeholder]</strong></article>
+      <article class="mini-info"><span>Institution</span><strong>[Placeholder]</strong></article>
+      <article class="mini-info"><span>Timeline</span><strong>[Placeholder]</strong></article>
+    </section>
+
+    <section class="toc">
+      <h2>Contents</h2>
+      <ul class="toc-grid">
+        <li><a href="#overview">01. Overview</a></li>
+        <li><a href="#problem-solution">02. Problem and Solution</a></li>
+        <li><a href="#users-flow">03. User Flow</a></li>
+        <li><a href="#admin-flow">04. Admin Flow</a></li>
+        <li><a href="#modules">05. Core Modules</a></li>
+        <li><a href="#results">06. Outcomes</a></li>
+        <li><a href="#architecture">07. Architecture</a></li>
+        <li><a href="#next">08. Next Steps</a></li>
+      </ul>
+    </section>
+
+    <section id="overview" class="section">
+      <p class="kicker">01 • Overview</p>
+      <h2>[Placeholder] Project context and goals</h2>
+      <p>[Placeholder] Summarize the project purpose, stakeholders, and expected impact.</p>
+    </section>
+
+    <section id="problem-solution" class="section">
+      <p class="kicker">02 • Problem and Solution</p>
+      <h2>[Placeholder] Problem statement and solution summary</h2>
+      <div class="split">
+        <article class="card">
+          <h3>Problem</h3>
+          <p>[Placeholder] Describe the admissions pain points and manual process bottlenecks.</p>
+        </article>
+        <article class="card">
+          <h3>Solution</h3>
+          <p>[Placeholder] Describe the end-to-end digital admissions workflow and improvements.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="users-flow" class="section">
+      <p class="kicker">03 • User Flow</p>
+      <h2>[Placeholder] Applicant journey</h2>
+      <p>[Placeholder] Add detailed applicant steps from registration to status tracking.</p>
+      <div class="section-image"><img src="auajs.jpg" alt="Applicant flow placeholder image"></div>
+    </section>
+
+    <section id="admin-flow" class="section">
+      <p class="kicker">04 • Admin Flow</p>
+      <h2>[Placeholder] Admissions office workflow</h2>
+      <p>[Placeholder] Add admin validation, review, and approval process details.</p>
+    </section>
+
+    <section id="modules" class="section">
+      <p class="kicker">05 • Core Modules</p>
+      <h2>[Placeholder] Features breakdown</h2>
+      <div class="pill-list">
+        <span class="pill">[Placeholder Module 1]</span>
+        <span class="pill">[Placeholder Module 2]</span>
+        <span class="pill">[Placeholder Module 3]</span>
+        <span class="pill">[Placeholder Module 4]</span>
+      </div>
+    </section>
+
+    <section id="results" class="section">
+      <p class="kicker">06 • Outcomes</p>
+      <h2>[Placeholder] Impact and metrics</h2>
+      <p>[Placeholder] Add measurable results such as processing time reduction and tracking accuracy.</p>
+    </section>
+
+    <section id="architecture" class="section">
+      <p class="kicker">07 • Architecture</p>
+      <h2>[Placeholder] Technical setup</h2>
+      <div class="pill-list">
+        <span class="pill">HTML</span>
+        <span class="pill">CSS</span>
+        <span class="pill">PHP</span>
+        <span class="pill">MySQL</span>
+      </div>
+    </section>
+
+    <section id="next" class="section">
+      <p class="kicker">08 • Next Steps</p>
+      <h2>[Placeholder] Planned enhancements</h2>
+      <p>[Placeholder] Add roadmap items such as notifications, role permissions, and analytics dashboard.</p>
+    </section>
+
+    <p class="footer-note">Placeholder draft page. Replace bracketed content later.</p>
+  </main>
+</body>
+</html>
