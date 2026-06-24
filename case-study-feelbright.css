@@ -1,0 +1,308 @@
+:root {
+      --bg: #f5f3ef;
+      --surface: #ffffff;
+      --surface-soft: #f2ede4;
+      --ink: #1f1c17;
+      --muted: #6a6257;
+      --line: #ded6ca;
+      --brand: #0e5960;
+      --brand-soft: #dcece8;
+      --radius: 16px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(14, 89, 96, 0.11), transparent 35%),
+        radial-gradient(circle at 0% 100%, rgba(160, 128, 84, 0.09), transparent 40%),
+        var(--bg);
+      line-height: 1.62;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin-inline: auto;
+      padding-block: 2rem 3.2rem;
+    }
+
+    .top-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+
+    .back-link {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .meta-line {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .updated-badge {
+      display: inline-block;
+      margin-top: 0.5rem;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      color: #184943;
+      border-radius: 999px;
+      padding: 0.26rem 0.62rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-family: Manrope, sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.03;
+      margin: 0.7rem 0 0.45rem;
+    }
+
+    .subtitle {
+      font-family: Manrope, sans-serif;
+      color: var(--brand);
+      font-size: clamp(1rem, 2.4vw, 1.25rem);
+      font-weight: 700;
+      margin-bottom: 0.95rem;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 76ch;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-image,
+    .section-image {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: var(--surface-soft);
+      aspect-ratio: 16 / 9;
+    }
+
+    .hero-image img,
+    .section-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin: 1rem 0 1.1rem;
+    }
+
+    .mini-info {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 0.85rem;
+    }
+
+    .mini-info span {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .mini-info strong {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .toc {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .toc h2 {
+      font-family: Manrope, sans-serif;
+      font-size: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.35rem 1rem;
+      list-style: none;
+    }
+
+    .toc-grid a {
+      color: var(--brand);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .toc-grid a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .kicker {
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .section h2 {
+      font-family: Manrope, sans-serif;
+      font-size: 1.35rem;
+      line-height: 1.22;
+      margin-bottom: 0.55rem;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin-bottom: 0.72rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.55rem;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fcfaf5;
+      padding: 0.8rem;
+    }
+
+    .card h3 {
+      font-family: Manrope, sans-serif;
+      font-size: 0.98rem;
+      margin-bottom: 0.28rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.42rem;
+      margin-top: 0.35rem;
+    }
+
+    .pill {
+      padding: 0.28rem 0.56rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.73rem;
+      color: #4f473d;
+      background: var(--brand-soft);
+      font-weight: 600;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-top: 0.6rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+      background: #fffefb;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      padding: 0.65rem 0.72rem;
+      font-size: 0.85rem;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f4efe6;
+      font-family: Manrope, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .footer-note {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .grid-4,
+      .toc-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+    }
