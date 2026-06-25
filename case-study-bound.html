@@ -13,26 +13,27 @@
   <main class="container">
     <div class="top-links">
       <a class="back-link" href="index.html#projects">Back to Projects</a>
-      <p class="meta-line">Case Study • Placeholder Draft</p>
+      <p class="meta-line">Case Study - Co-op Platformer Prototype - 2025</p>
     </div>
 
     <h1>Bound Together</h1>
-    <p class="placeholder-badge">Content Placeholder</p>
-    <p class="subtitle">Case Study Layout Ready</p>
+    <p class="placeholder-badge">Implemented Build</p>
+    <p class="subtitle">A Two-Character Puzzle Platformer Built in Godot 4.3</p>
     <p class="lead">
-      This page now uses the same long-form case-study layout as FeelBright.
-      Content is intentionally placeholder text for now so you can replace it later with your final write-up.
+      Bound Together is a cooperative-style platformer prototype where two characters move through puzzle levels
+      using synchronized traversal, object interaction, and switch-based progression. The latest project version
+      includes a multi-level flow, menu system, moving platforms, linked lever-door logic, and shared camera tracking.
     </p>
 
     <div class="hero-image" aria-label="Bound Together hero image">
       <img src="bound.jpg" alt="Bound Together project image">
     </div>
 
-    <section class="grid-4" aria-label="Project overview placeholders">
-      <article class="mini-info"><span>Role</span><strong>[Placeholder]</strong></article>
-      <article class="mini-info"><span>Platform</span><strong>[Placeholder]</strong></article>
-      <article class="mini-info"><span>Project Type</span><strong>[Placeholder]</strong></article>
-      <article class="mini-info"><span>Timeline</span><strong>[Placeholder]</strong></article>
+    <section class="grid-4" aria-label="Project overview">
+      <article class="mini-info"><span>Role</span><strong>Gameplay and Level Developer</strong></article>
+      <article class="mini-info"><span>Platform</span><strong>PC Desktop (Godot)</strong></article>
+      <article class="mini-info"><span>Project Type</span><strong>2D Puzzle Platformer Prototype</strong></article>
+      <article class="mini-info"><span>Timeline</span><strong>March 2025 Iteration Build</strong></article>
     </section>
 
     <section class="toc">
@@ -50,72 +51,108 @@
     </section>
 
     <section id="overview" class="section">
-      <p class="kicker">01 • Overview</p>
-      <h2>[Placeholder] Project context and creative goals</h2>
-      <p>[Placeholder] Summarize concept, intended audience, and success criteria.</p>
+      <p class="kicker">01 - Overview</p>
+      <h2>Designing a Cooperative Puzzle Journey Around Two Playable Characters</h2>
+      <p>
+        The project focuses on cooperative problem solving through movement timing, shared traversal pressure,
+        and world interaction. Two controllable characters, Lumi and Nous, must progress through handcrafted levels
+        where the challenge comes from coordination rather than pure speed.
+      </p>
     </section>
 
     <section id="problem-solution" class="section">
-      <p class="kicker">02 • Problem and Solution</p>
-      <h2>[Placeholder] Why the game was built and how design addressed it</h2>
+      <p class="kicker">02 - Problem and Solution</p>
+      <h2>Making Cooperation Meaningful in Moment-to-Moment Gameplay</h2>
       <div class="split">
         <article class="card">
           <h3>Problem</h3>
-          <p>[Placeholder] Describe the design challenge for meaningful cooperation.</p>
+          <p>
+            Many local co-op concepts feel cooperative in theme but can still be completed with low team interaction.
+            The challenge here was to make both characters consistently relevant to progression.
+          </p>
         </article>
         <article class="card">
           <h3>Solution</h3>
-          <p>[Placeholder] Explain mechanics and pacing choices that enforce teamwork.</p>
+          <p>
+            The design combines dual control schemes, shared camera centering, moving-platform timing,
+            physics-based box interactions, and lever-door links so players repeatedly coordinate actions to advance.
+          </p>
         </article>
       </div>
     </section>
 
     <section id="mechanics" class="section">
-      <p class="kicker">03 • Core Mechanics</p>
-      <h2>[Placeholder] Shared controls and dependencies</h2>
-      <p>[Placeholder] Add movement rules, interaction mechanics, and fail conditions.</p>
-      <div class="section-image"><img src="bound.jpg" alt="Core mechanics placeholder image"></div>
+      <p class="kicker">03 - Core Mechanics</p>
+      <h2>Dual Character Control, Physics Push, and World Triggers</h2>
+      <p>
+        Lumi uses A and D for horizontal movement plus W to jump, while Nous uses arrow controls for movement and jump.
+        Both characters have the same movement profile (speed and jump velocity), include gravity handling,
+        and can push rigid bodies through horizontal impulse. Character hitboxes can activate interactive objects
+        that expose a trigger method, enabling direct world-state changes during traversal.
+      </p>
+      <div class="section-image"><img src="bound.jpg" alt="Bound Together mechanics overview image"></div>
     </section>
 
     <section id="level-design" class="section">
-      <p class="kicker">04 • Level Design</p>
-      <h2>[Placeholder] Progression and challenge ramp</h2>
-      <p>[Placeholder] Add level structure, checkpoints, and difficulty curve strategy.</p>
+      <p class="kicker">04 - Level Design</p>
+      <h2>Four-Level Progression with Distinct Visual Themes</h2>
+      <p>
+        The current build includes Level0 through Level3, selectable from a dedicated level menu.
+        The environment pipeline blends multiple visual sets, including floating island scenes, cave backgrounds,
+        and swamp-themed assets. Moving platform scenes are reused across levels with different motion paths,
+        supporting a clear difficulty ramp through timing and positioning complexity.
+      </p>
     </section>
 
     <section id="coop-flow" class="section">
-      <p class="kicker">05 • Co-op Flow</p>
-      <h2>[Placeholder] Communication moments and teamwork loops</h2>
+      <p class="kicker">05 - Co-op Flow</p>
+      <h2>Repeatable Teamwork Loops That Drive Progression</h2>
       <div class="pill-list">
-        <span class="pill">[Placeholder Loop 1]</span>
-        <span class="pill">[Placeholder Loop 2]</span>
-        <span class="pill">[Placeholder Loop 3]</span>
-        <span class="pill">[Placeholder Loop 4]</span>
+        <span class="pill">Split Positioning and Regrouping</span>
+        <span class="pill">Lever Activation and Door State Changes</span>
+        <span class="pill">Box Pushing for Access and Alignment</span>
+        <span class="pill">Moving Platform Timing Calls</span>
       </div>
     </section>
 
     <section id="playtest" class="section">
-      <p class="kicker">06 • Playtest Findings</p>
-      <h2>[Placeholder] Testing feedback and tuning changes</h2>
-      <p>[Placeholder] Add top playtest observations and balancing decisions.</p>
+      <p class="kicker">06 - Playtest Findings</p>
+      <h2>Iteration Focused on Control Feel and Level Clarity</h2>
+      <p>
+        Internal iteration in the latest build focused on improving character control responsiveness,
+        tightening object interaction feel, and refining level scenes, especially in mid-game progression.
+        Script and scene updates in the recent version indicate active tuning on character controllers and Level2 layout behavior.
+      </p>
     </section>
 
     <section id="architecture" class="section">
-      <p class="kicker">07 • Technical Notes</p>
-      <h2>[Placeholder] Systems and implementation</h2>
+      <p class="kicker">07 - Technical Notes</p>
+      <h2>Godot 4.3 Scene-Based Architecture with GDScript Gameplay Logic</h2>
+      <p>
+        The project is configured for Godot 4.3 and uses scene composition for characters, levels,
+        actionables, and moving platforms. Menu scripts handle scene transitions, a custom camera script
+        centers horizontally between both players with map-limit clamping, and lever signals are linked by code
+        to door state handlers for puzzle-style interactions.
+      </p>
       <div class="pill-list">
         <span class="pill">Godot</span>
         <span class="pill">GDScript</span>
+        <span class="pill">Scene Instancing</span>
+        <span class="pill">Signal-Based Interactions</span>
       </div>
     </section>
 
     <section id="next" class="section">
-      <p class="kicker">08 • Next Steps</p>
-      <h2>[Placeholder] Planned improvements</h2>
-      <p>[Placeholder] Add expansion roadmap, polish tasks, and release plan.</p>
+      <p class="kicker">08 - Next Steps</p>
+      <h2>Polish, Difficulty Balancing, and Expanded Puzzle Depth</h2>
+      <p>
+        Next milestones include stronger onboarding prompts, more intentional puzzle sequencing,
+        improved visual feedback for interactables, additional hazard and fail-state readability,
+        and a polished end-to-end play loop suitable for wider playtesting.
+      </p>
     </section>
 
-    <p class="footer-note">Placeholder draft page. Replace bracketed content later.</p>
+    <p class="footer-note">Content updated from the latest Bound Together source at C:/Users/Admin/OneDrive/Documents/bound-together.</p>
   </main>
 </body>
 </html>
