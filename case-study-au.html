@@ -13,26 +13,27 @@
   <main class="container">
     <div class="top-links">
       <a class="back-link" href="index.html#projects">Back to Projects</a>
-      <p class="meta-line">Case Study • Placeholder Draft</p>
+      <p class="meta-line">Case Study - Admissions Platform - 2025</p>
     </div>
 
     <h1>Arellano University Online Admission System</h1>
-    <p class="placeholder-badge">Content Placeholder</p>
-    <p class="subtitle">Case Study Layout Ready</p>
+    <p class="placeholder-badge">Implemented Build</p>
+    <p class="subtitle">A Web-Based Student Admission and Admin Processing System</p>
     <p class="lead">
-      This page now matches the same long-form case study style as FeelBright.
-      Section structure is finalized, and the text below is temporary placeholder copy for quick iteration.
+      AUJASADMS is a full-stack PHP and MySQL platform that digitizes admissions from account creation to final decision.
+      It supports applicant-side submission and tracking, plus an admin-side review pipeline with approve and reject actions,
+      remarks, document viewing, and report exports in CSV and PDF.
     </p>
 
     <div class="hero-image" aria-label="Arellano hero image">
       <img src="auajs.jpg" alt="Arellano project image">
     </div>
 
-    <section class="grid-4" aria-label="Project overview placeholders">
-      <article class="mini-info"><span>Role</span><strong>[Placeholder]</strong></article>
-      <article class="mini-info"><span>Platform</span><strong>[Placeholder]</strong></article>
-      <article class="mini-info"><span>Institution</span><strong>[Placeholder]</strong></article>
-      <article class="mini-info"><span>Timeline</span><strong>[Placeholder]</strong></article>
+    <section class="grid-4" aria-label="Project overview">
+      <article class="mini-info"><span>Role</span><strong>Full-Stack Developer</strong></article>
+      <article class="mini-info"><span>Platform</span><strong>Web Application (PHP + MySQL)</strong></article>
+      <article class="mini-info"><span>Institution</span><strong>Arellano University</strong></article>
+      <article class="mini-info"><span>Timeline</span><strong>March to April 2025</strong></article>
     </section>
 
     <section class="toc">
@@ -50,74 +51,128 @@
     </section>
 
     <section id="overview" class="section">
-      <p class="kicker">01 • Overview</p>
-      <h2>[Placeholder] Project context and goals</h2>
-      <p>[Placeholder] Summarize the project purpose, stakeholders, and expected impact.</p>
+      <p class="kicker">01 - Overview</p>
+      <h2>From Manual Admissions to a Structured Online Workflow</h2>
+      <p>
+        The system was built to simplify admissions for both applicants and school personnel.
+        Instead of handling fragmented paper submissions and manual follow-ups, AUJASADMS centralizes student records,
+        requirements, and decision outcomes in one application.
+      </p>
+      <div class="split">
+        <article class="card">
+          <h3>Primary Users</h3>
+          <p>
+            Applicants and admissions staff, with role-based interfaces for Student and Admin accounts.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Core Goal</h3>
+          <p>
+            Deliver a clear submission-to-decision pipeline with status visibility, document validation, and reporting.
+          </p>
+        </article>
+      </div>
     </section>
 
     <section id="problem-solution" class="section">
-      <p class="kicker">02 • Problem and Solution</p>
-      <h2>[Placeholder] Problem statement and solution summary</h2>
+      <p class="kicker">02 - Problem and Solution</p>
+      <h2>Reducing Friction in Submission, Review, and Decision Updates</h2>
       <div class="split">
         <article class="card">
           <h3>Problem</h3>
-          <p>[Placeholder] Describe the admissions pain points and manual process bottlenecks.</p>
+          <p>
+            Manual admissions workflows are slow, hard to track, and prone to missing requirements.
+            Applicants also lack visibility on application progress and reasons for rejection.
+          </p>
         </article>
         <article class="card">
           <h3>Solution</h3>
-          <p>[Placeholder] Describe the end-to-end digital admissions workflow and improvements.</p>
+          <p>
+            AUJASADMS introduces account-based submission, online requirement uploads, admin review actions,
+            decision remarks, and filterable reporting with CSV and PDF export.
+          </p>
         </article>
       </div>
     </section>
 
     <section id="users-flow" class="section">
-      <p class="kicker">03 • User Flow</p>
-      <h2>[Placeholder] Applicant journey</h2>
-      <p>[Placeholder] Add detailed applicant steps from registration to status tracking.</p>
-      <div class="section-image"><img src="auajs.jpg" alt="Applicant flow placeholder image"></div>
+      <p class="kicker">03 - User Flow</p>
+      <h2>Applicant Journey: Register, Submit, and Track Status</h2>
+      <p>
+        Students create an account, log in, and fill a multi-section admission form that includes personal details,
+        family background, educational background, and course preferences. Required documents are uploaded and validated
+        (PDF, JPG, PNG). After submission, applicants can view their full form, current status (Pending, Approved, Rejected),
+        and admin remarks in their dashboard.
+      </p>
+      <div class="section-image"><img src="auajs.jpg" alt="Applicant flow overview image"></div>
     </section>
 
     <section id="admin-flow" class="section">
-      <p class="kicker">04 • Admin Flow</p>
-      <h2>[Placeholder] Admissions office workflow</h2>
-      <p>[Placeholder] Add admin validation, review, and approval process details.</p>
+      <p class="kicker">04 - Admin Flow</p>
+      <h2>Admin Workflow: Review, Decide, and Communicate</h2>
+      <p>
+        Admins authenticate through a separate portal and manage applications through status-based queues
+        (total, pending, approved, rejected). Each application can be reviewed in detail, documents can be opened securely,
+        and decisions are processed through approve or reject actions. Rejections include custom remarks; approvals auto-attach
+        a confirmation remark for student visibility.
+      </p>
     </section>
 
     <section id="modules" class="section">
-      <p class="kicker">05 • Core Modules</p>
-      <h2>[Placeholder] Features breakdown</h2>
+      <p class="kicker">05 - Core Modules</p>
+      <h2>Feature Breakdown from the Production Build</h2>
       <div class="pill-list">
-        <span class="pill">[Placeholder Module 1]</span>
-        <span class="pill">[Placeholder Module 2]</span>
-        <span class="pill">[Placeholder Module 3]</span>
-        <span class="pill">[Placeholder Module 4]</span>
+        <span class="pill">Student Registration and Login</span>
+        <span class="pill">Admission Form and File Uploads</span>
+        <span class="pill">Student Dashboard with Status and Remarks</span>
+        <span class="pill">Admin Dashboard and Queue Management</span>
+        <span class="pill">Course Management</span>
+        <span class="pill">Search and Application Detail View</span>
+        <span class="pill">CSV and PDF Report Export</span>
+        <span class="pill">Archive and Restore for Users and Admins</span>
       </div>
     </section>
 
     <section id="results" class="section">
-      <p class="kicker">06 • Outcomes</p>
-      <h2>[Placeholder] Impact and metrics</h2>
-      <p>[Placeholder] Add measurable results such as processing time reduction and tracking accuracy.</p>
+      <p class="kicker">06 - Outcomes</p>
+      <h2>Operational Gains in Visibility and Decision Handling</h2>
+      <p>
+        The platform improved admissions operations by making application data traceable end to end.
+        Staff can monitor applicant volumes and status counts directly from the dashboard, while students receive
+        timely decision updates with remarks. Report generation also became faster through one-click CSV and PDF export.
+      </p>
     </section>
 
     <section id="architecture" class="section">
-      <p class="kicker">07 • Architecture</p>
-      <h2>[Placeholder] Technical setup</h2>
+      <p class="kicker">07 - Architecture</p>
+      <h2>Technical Stack and Data Model</h2>
+      <p>
+        AUJASADMS runs on a standard XAMPP setup using PHP, MySQL, HTML, CSS, Bootstrap, and JavaScript.
+        The data model includes dedicated tables for admins, users, courses, student applications, and archived entities.
+        Application records store both profile fields and admission requirement file paths, plus status and remarks for review outcomes.
+      </p>
       <div class="pill-list">
+        <span class="pill">XAMPP (Apache + MariaDB)</span>
         <span class="pill">HTML</span>
         <span class="pill">CSS</span>
         <span class="pill">PHP</span>
         <span class="pill">MySQL</span>
+        <span class="pill">Bootstrap</span>
+        <span class="pill">TCPDF</span>
       </div>
     </section>
 
     <section id="next" class="section">
-      <p class="kicker">08 • Next Steps</p>
-      <h2>[Placeholder] Planned enhancements</h2>
-      <p>[Placeholder] Add roadmap items such as notifications, role permissions, and analytics dashboard.</p>
+      <p class="kicker">08 - Next Steps</p>
+      <h2>Roadmap for a More Robust Admissions Platform</h2>
+      <p>
+        Planned improvements include stronger form-to-user linking to support multiple applications per account,
+        stricter server-side validation and prepared statements across all filters, notification workflows for status changes,
+        richer analytics dashboards, and cleaner document path standardization for long-term maintenance.
+      </p>
     </section>
 
-    <p class="footer-note">Placeholder draft page. Replace bracketed content later.</p>
+    <p class="footer-note">Content updated from the AUJASADMS project source in XAMPP htdocs.</p>
   </main>
 </body>
 </html>
